@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>스트리머 에코 네트워크</title>
+  <meta property="og:title" content="스트리머 에코 네트워크">
+  <meta property="og:description" content="스트리머 생태계를 위한 최소 기능 허브">
+  <meta property="og:image" content="TODO: ADD OG IMAGE URL">
+  <link rel="icon" href="TODO: ADD FAVICON URL" type="image/png">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --fg: #f8fafc;
+      --accent: #38bdf8;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --border: rgba(148, 163, 184, 0.4);
+      font-family: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(160deg, #020617 0%, #1e293b 100%);
+      color: var(--fg);
+    }
+    header, footer {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 0.75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+    .description {
+      margin: 0 auto 0.75rem auto;
+      max-width: 48rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .meta {
+      margin: 0 auto;
+      max-width: 48rem;
+      font-size: 0.95rem;
+      color: rgba(248, 250, 252, 0.8);
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 1.25rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: rgba(30, 41, 59, 0.5);
+    }
+    main {
+      flex: 1;
+      width: min(960px, 92vw);
+      margin: 0 auto;
+      padding-bottom: 3rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .card {
+      padding: 1.75rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      outline: none;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.35rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.2rem;
+    }
+    nav a:hover,
+    nav a:focus-visible {
+      border-color: var(--accent);
+      outline: none;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover,
+    footer a:focus-visible {
+      text-decoration: underline;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="주요 탐색">
+      <a href="./index.html">홈</a>
+      <a href="./pages/schedule.html">일정</a>
+      <a href="./pages/new-creators.html">신규 스트리머</a>
+      <a href="./pages/clips.html">클립 큐레이션</a>
+      <a href="./pages/tutorials/">튜토리얼</a>
+      <a href="./pages/contribute.html">Contribute</a>
+      <a href="./pages/about.html">About</a>
+    </nav>
+    <h1>스트리머 에코 네트워크</h1>
+    <p class="description">스트리머 생태계의 일정 공유, 신규 인재 발굴, 클립 큐레이션, 튜토리얼 아카이브 네 가지만을 정적으로 제공하며 승인·알림·검색 등은 차후로 보류합니다.</p>
+    <p class="meta">마지막 업데이트: 2024-02-20 · 기준 시간대: Asia/Seoul</p>
+    <div class="badge" role="status">초기 기능만 제공 · 나머지 전부 보류</div>
+  </header>
+  <main>
+    <section class="cards" aria-label="핵심 기능">
+      <a class="card" href="./pages/schedule.html">
+        <h2>공동 일정</h2>
+        <p>협업 이벤트와 생방송 계획을 수동 표로 정리하며 알림·ICS 연동 없이 유지합니다.</p>
+      </a>
+      <a class="card" href="./pages/new-creators.html">
+        <h2>신규 스트리머 스포트라이트</h2>
+        <p>최근 합류한 채널 정보를 한 줄 소개와 태그로 정리하고 자동 추천은 도입하지 않습니다.</p>
+      </a>
+      <a class="card" href="./pages/clips.html">
+        <h2>클립 큐레이션 보드</h2>
+        <p>PR로 제안된 YouTube 링크를 수동 큐레이션하고 조회수 집계 등 자동 기능은 보류합니다.</p>
+      </a>
+      <a class="card" href="./pages/tutorials/">
+        <h2>튜토리얼 모음</h2>
+        <p>입문자 대상 문서 링크 허브를 제공하며 외부 도구 연동 없이 체크리스트로 안내합니다.</p>
+      </a>
+    </section>
+  </main>
+  <footer>
+    <p><a href="./pages/contribute.html">기여 가이드</a> · <a href="./pages/about.html">프로젝트 소개</a></p>
+    <p>GitHub Pages에서 서비스됩니다. Asia/Seoul 표준으로 일정이 관리됩니다.</p>
+  </footer>
+</body>
+</html>
