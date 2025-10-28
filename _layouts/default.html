@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ '/assets/css/tgd.css' | relative_url }}">
+  </head>
+  <body class="tgd page-{{ page.slug | default: page.title | default: page.permalink | slugify }} layout-{{ page.layout | default: 'default' | slugify }}">
+    <header class="tgd-topbar">
+      <div class="inner">
+        <a class="tgd-brand" href="{{ '/' | relative_url }}"><span class="dot"></span><span>{{ site.title | default: 'Site' }}</span></a>
+        <div class="tgd-spacer"></div>
+        <div class="tgd-top-actions">
+          <a href="{{ '/creators/' | relative_url }}" class="btn">스트리머</a>
+          <a href="{{ '/community/' | relative_url }}" class="btn">커뮤니티</a>
+          {% if site.auth and site.auth.enable %}
+<span id="top-auth-links"><a class="btn" href="{{ '/auth/login/' | relative_url }}">로그인</a> <a class="btn" href="{{ '/auth/signup/' | relative_url }}">회원가입</a></span>
+{% endif %}
+        </div>
+      </div>
+    </header>
+
+    <div class="tgd-shell">
+      <aside class="tgd-sidebar">
+        <nav class="tgd-nav">
+          <a href="{{ '/creators/'  | relative_url }}"><span class="bullet"></span> 스트리머</a>
+          <a href="{{ '/tutorials/'  | relative_url }}"><span class="bullet"></span> 튜토리얼</a>
+          <a href="{{ '/community/'  | relative_url }}"><span class="bullet"></span> 커뮤니티</a>
+          <a href="{{ '/gear/'       | relative_url }}"><span class="bullet"></span> 장비</a>
+          <a href="{{ '/awards/'     | relative_url }}"><span class="bullet"></span> 어워즈</a>
+          <a href="{{ '/trends/'     | relative_url }}"><span class="bullet"></span> 트렌드</a>
+          <a href="{{ '/about/'      | relative_url }}"><span class="bullet"></span> 소개</a>
+        </nav>
+      </aside>
+
+      <main class="tgd-main">
+        <div class="tgd-card">
+          {{ content }}
+          <div id="auth-area"></div>
+        </div>
+        {%- if site.giscus and site.giscus.repo -%}
+        <div class="tgd-card">{% include giscus.html %}</div>
+        {%- endif -%}
+      </main>
+    </div>
+
+    {% include footer.html %}
+    <script src="{{ '/assets/js/tgd.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/auth.config.js' | relative_url }}"></script>
+    <script type="module" src="{{ '/assets/js/auth.js' | relative_url }}"></script>
+  </body>
+</html>

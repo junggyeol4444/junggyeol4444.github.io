@@ -1,0 +1,16 @@
+
+<footer class="tgd-footer">
+  <div>© {{ site.time | date: '%Y' }} {{ site.title }}</div>
+  <div>
+    {%- if site.footer_text -%}
+      {{ site.footer_text }}
+    {%- else -%}
+      <!-- Set 'footer_text' in _config.yml to customize -->
+    {%- endif -%}
+    {%- if site.footer_links and site.footer_links.size > 0 -%}
+      {%- for l in site.footer_links -%}
+        · <a href="{{ l.url }}">{{ l.text }}</a>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</footer>
