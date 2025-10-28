@@ -1,6 +1,9 @@
 ---
-layout: null
+layout: page
+title: Schedule
+permalink: /pages/schedule.html
 ---
+
 # 방송 일정
 
 정적 GitHub Pages 상에서 협업 방송 일정을 수동 표로 정리하며 알림·구독·자동 동기화 기능은 모두 보류합니다.
