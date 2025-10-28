@@ -1,0 +1,46 @@
+
+title: 방게더
+description: 방송인들을 위한 커뮤니티
+url: ""  # set your custom domain or repo pages URL
+baseurl: ""  # set to "/repo-name" for project sites
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation links for "방게더"
+nav:
+  - title: 방송 일정
+    url: /schedule/
+  - title: 스트리머
+    url: /creators/
+  - title: 방송 클립
+    url: /clips/
+  - title: 튜토리얼
+    url: /tutorials/
+  - title: 커뮤니티
+    url: /community/
+  - title: 장비
+    url: /gear/
+  - title: 어워즈
+    url: /awards/
+  - title: 트렌드
+    url: /trends/
+  - title: 참여하기
+    url: /contribute/
+  - title: 소개
+    url: /about/
+
+# Dark Mode Setting
+dark_mode: true
+
+# Authentication settings
+auth:
+  platforms:
+    - twitch
+    - youtube
+    - soop_tv
+    - chijijik
