@@ -16,7 +16,6 @@
         <div class="tgd-top-actions">
           <a href="{{ '/creators/' | relative_url }}" class="btn">스트리머</a>
           <a href="{{ '/community/' | relative_url }}" class="btn">커뮤니티</a>
-          <!-- Static auth links; JS will swap to '마이페이지' if 로그인 상태 -->
           <span id="top-auth-links"><a class="btn" href="{{ '/auth/login/' | relative_url }}">로그인</a> <a class="btn" href="{{ '/auth/signup/' | relative_url }}">회원가입</a></span>
         </div>
       </div>
@@ -46,10 +45,7 @@
       </main>
     </div>
 
-    <footer class="tgd-footer">
-      <div>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</div>
-      <div>Powered by Jekyll · Custom TGD-like theme</div>
-    </footer>
+    {% include footer.html %}
     <script src="{{ '/assets/js/tgd.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/auth.config.js' | relative_url }}"></script>
     <script type="module" src="{{ '/assets/js/auth.js' | relative_url }}"></script>

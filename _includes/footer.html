@@ -1,12 +1,16 @@
 
-<div class="footer-inner">
-  <div class="footer-left">
-    <p>&copy; <span id="y"></span> {{ site.title }} — 정적 우선 · Zero-secret</p>
+<footer class="tgd-footer">
+  <div>© {{ site.time | date: '%Y' }} {{ site.title }}</div>
+  <div>
+    {%- if site.footer_text -%}
+      {{ site.footer_text }}
+    {%- else -%}
+      <!-- Set 'footer_text' in _config.yml to customize -->
+    {%- endif -%}
+    {%- if site.footer_links and site.footer_links.size > 0 -%}
+      {%- for l in site.footer_links -%}
+        · <a href="{{ l.url }}">{{ l.text }}</a>
+      {%- endfor -%}
+    {%- endif -%}
   </div>
-  <div class="footer-right">
-    <a href="{{ '/out/schedule.ics' | relative_url }}">ICS</a> ·
-    <a href="{{ '/out/schedule.rss' | relative_url }}">일정 RSS</a> ·
-    <a href="{{ '/out/clips.rss' | relative_url }}">클립 RSS</a>
-  </div>
-</div>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</footer>
