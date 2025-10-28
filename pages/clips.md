@@ -1,6 +1,9 @@
 ---
-layout: null
+layout: page
+title: Clips
+permalink: /pages/clips.html
 ---
+
 # 클립 큐레이션 보드
 
 커뮤니티 PR로 제출된 YouTube 링크를 수동으로 정리하며 조회수 집계, 자동 추천, 다운로드 제공은 모두 보류합니다.
