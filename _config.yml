@@ -1,4 +1,3 @@
-
 title: 방게더
 description: 방송인들을 위한 커뮤니티
 url: ""  # set your custom domain or repo pages URL
@@ -13,8 +12,6 @@ plugins:
 
 # Navigation links for "방게더"
 nav:
-  - title: 방송 일정
-    url: /schedule/
   - title: 스트리머
     url: /creators/
   - title: 방송 클립
@@ -39,9 +36,9 @@ dark_mode: true
 
 # Authentication settings
 auth:
-  enable: false
+  enable: true
   platforms:
     - twitch
     - youtube
     - soop_tv
-    - chijijik
+    - CHZZK

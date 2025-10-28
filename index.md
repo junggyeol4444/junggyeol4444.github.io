@@ -1,14 +1,9 @@
-
-
 <section class="hero">
   <h1>StreamHub</h1>
   <p>방송인/크리에이터를 위한 정적 우선 커뮤니티 허브</p>
 </section>
 
 <section class="grid-cards">
-  <a class="card" href="{{ '/schedule/' | relative_url }}">
-    <h3>일정</h3><p>방송 일정/행사 캘린더</p>
-  </a>
   <a class="card" href="{{ '/creators/' | relative_url }}">
     <h3>신규 크리에이터</h3><p>새 얼굴을 발견하세요</p>
   </a>
