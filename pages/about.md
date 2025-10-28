@@ -1,5 +1,7 @@
 ---
-layout: null
+layout: page
+title: About
+permalink: /pages/about.html
 ---
 # 프로젝트 소개
 
