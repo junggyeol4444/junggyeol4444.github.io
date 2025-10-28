@@ -4,9 +4,7 @@ layout: default
 title: 스트리머
 permalink: /creators/
 ---
-
 <h1>스트리머</h1>
-
 <ul class="card-list">
 {% assign items = site.data.creators %}
 {% if items and items.size > 0 %}
@@ -18,5 +16,6 @@ permalink: /creators/
     </li>
   {% endfor %}
 {% else %}
+  <li class="card"><p class="muted">등록된 스트리머가 없습니다.</p></li>
 {% endif %}
 </ul>
