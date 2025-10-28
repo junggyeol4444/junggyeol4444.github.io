@@ -1,6 +1,9 @@
 ---
-layout: null
+layout: page
+title: New Creators
+permalink: /pages/new-creators.html
 ---
+
 # 신규 스트리머 스포트라이트
 
 최근 합류한 채널을 수동으로 소개하며 자동 추천·개인화·크롤링 기능은 추후 검토까지 보류합니다.
