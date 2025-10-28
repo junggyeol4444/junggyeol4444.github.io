@@ -8,7 +8,6 @@
     {%- seo -%}
     <link rel="stylesheet" href="{{ '/assets/css/tgd.css' | relative_url }}">
   </head>
-  {%- assign is_creator = page.layout == 'creator' or page.url contains '/creators/' -%}
   <body class="tgd page-{{ page.slug | default: page.title | default: page.permalink | slugify }} layout-{{ page.layout | default: 'default' | slugify }}">
     <header class="tgd-topbar">
       <div class="inner">
@@ -16,8 +15,9 @@
         <div class="tgd-spacer"></div>
         <div class="tgd-top-actions">
           <a href="{{ '/creators/' | relative_url }}" class="btn">스트리머</a>
-          {%- if is_creator -%}<a href="#creator-schedule" class="btn">일정</a>{%- endif -%}
           <a href="{{ '/community/' | relative_url }}" class="btn">커뮤니티</a>
+          <!-- Static auth links; JS will swap to '마이페이지' if 로그인 상태 -->
+          <span id="top-auth-links"><a class="btn" href="{{ '/auth/login/' | relative_url }}">로그인</a> <a class="btn" href="{{ '/auth/signup/' | relative_url }}">회원가입</a></span>
         </div>
       </div>
     </header>
@@ -26,7 +26,6 @@
       <aside class="tgd-sidebar">
         <nav class="tgd-nav">
           <a href="{{ '/creators/'  | relative_url }}"><span class="bullet"></span> 스트리머</a>
-          {%- if is_creator -%}<a href="#creator-schedule"><span class="bullet"></span> 일정</a>{%- endif -%}
           <a href="{{ '/tutorials/'  | relative_url }}"><span class="bullet"></span> 튜토리얼</a>
           <a href="{{ '/community/'  | relative_url }}"><span class="bullet"></span> 커뮤니티</a>
           <a href="{{ '/gear/'       | relative_url }}"><span class="bullet"></span> 장비</a>
@@ -41,11 +40,8 @@
           {{ content }}
           <div id="auth-area"></div>
         </div>
-
         {%- if site.giscus and site.giscus.repo -%}
-        <div class="tgd-card">
-          {% include giscus.html %}
-        </div>
+        <div class="tgd-card">{% include giscus.html %}</div>
         {%- endif -%}
       </main>
     </div>

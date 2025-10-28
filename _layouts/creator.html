@@ -18,9 +18,6 @@ layout: default
         {%- if page.platform and page.channel_url -%}
           <a href="{{ page.channel_url }}" rel="noopener" target="_blank">{{ page.platform | upcase }} 채널</a>
         {%- endif -%}
-        {%- for link in page.links -%}
-          <a href="{{ link.url }}" rel="noopener" target="_blank">{{ link.label }}</a>
-        {%- endfor -%}
       </div>
     </div>
   </div>
@@ -61,7 +58,7 @@ layout: default
             </tbody>
           </table>
         {%- else -%}
-          <p style="color:var(--tgd-muted)">등록된 일정이 없습니다. <code>data/schedule.yml</code>에 <code>creator_id: {{ cid }}</code>로 항목을 추가하면 이 탭에 자동 표시됩니다.</p>
+          <p style="color:var(--tgd-muted)">등록된 일정이 없습니다. <code>data/schedule.yml</code>에 <code>creator_id: {{ cid }}</code>로 추가하세요.</p>
         {%- endif -%}
       {%- else -%}
         <p style="color:var(--tgd-muted)">사이트에 <code>data/schedule.yml</code>이 아직 없습니다.</p>
