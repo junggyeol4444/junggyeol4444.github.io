@@ -1,0 +1,34 @@
+
+---
+layout: default
+---
+<div class="creator-detail">
+  <div class="creator-card">
+    <div class="avatar">
+      {%- if page.avatar_url -%}
+        <img src="{{ page.avatar_url }}" alt="{{ page.name }}" style="width:100%;height:100%;object-fit:cover;">
+      {%- else -%}
+        {{ page.name | slice: 0, 2 }}
+      {%- endif -%}
+    </div>
+    <div class="meta">
+      <div class="name">{{ page.name }}</div>
+      {%- if page.bio %}<div class="bio" style="color:var(--tgd-muted); font-size:14px;">{{ page.bio }}</div>{% endif -%}
+      <div class="links">
+        {%- if page.platform and page.channel_url -%}
+          <a href="{{ page.channel_url }}" rel="noopener" target="_blank">{{ page.platform | upcase }} 채널</a>
+        {%- endif -%}
+        {%- for link in page.links -%}
+          <a href="{{ link.url }}" rel="noopener" target="_blank">{{ link.label }}</a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="tgd-card">
+    <h2 style="margin-top:0">소개</h2>
+    <p>{{ page.description | default: '소개가 아직 없습니다.' }}</p>
+  </div>
+</div>
