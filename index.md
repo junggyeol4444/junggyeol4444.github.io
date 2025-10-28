@@ -1,8 +1,4 @@
 
----
-layout: default
-title: 홈
----
 
 <section class="hero">
   <h1>StreamHub</h1>
