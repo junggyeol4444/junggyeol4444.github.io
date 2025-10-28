@@ -1,5 +1,5 @@
 
-import os, re, sys, yaml, pathlib, unicodedata
+import os, re, sys, yaml, pathlib, unicodedata, json
 
 def slugify(value: str) -> str:
     value = unicodedata.normalize("NFKD", value)
@@ -8,7 +8,6 @@ def slugify(value: str) -> str:
     return value
 
 def load_json_env(var):
-    import json
     s = os.environ.get(var, "")
     if not s:
         print(f"::warning::Missing env {var}")
@@ -23,7 +22,6 @@ def ensure_dir(p: pathlib.Path):
     p.mkdir(parents=True, exist_ok=True)
 
 root = pathlib.Path(".")
-
 data_dir = root / "data"
 creators_yml = data_dir / "creators.yml"
 pages_dir = root / "creators"
@@ -43,7 +41,7 @@ avatar_url = (info.get("avatar_url") or "").strip()
 slug = slugify(display_name)
 creator_id = f"{platform}-{slug}" if platform else slug
 
-# Update data/creators.yml
+# Update data/creators.yml (list)
 ensure_dir(data_dir)
 creators = []
 if creators_yml.exists():
@@ -57,7 +55,6 @@ if creators_yml.exists():
         except Exception as e:
             print(f"::warning::Failed to parse creators.yml: {e}")
 
-# Check duplicate by id or name
 for c in creators:
     if c.get("id") == creator_id or (c.get("name") or "").strip() == display_name:
         print("Creator already exists; skipping append.")
@@ -68,34 +65,31 @@ else:
         "name": display_name,
         "bio": bio or None,
         "avatar_url": avatar_url or None,
-        "platforms": [
-            {"platform": platform, "url": channel_url, "channel_id": channel_id or None}
-        ]
+        "platforms": [{"platform": platform, "url": channel_url, "channel_id": channel_id or None}]
     }
     creators.append(entry)
     with open(creators_yml, "w", encoding="utf-8") as f:
         yaml.safe_dump(creators, f, allow_unicode=True, sort_keys=False)
     print(f"Added to data/creators.yml: {creator_id}")
 
-# Create creators/<slug>.md (front matter only; no sample content)
+# Create creators/<slug>.md (front matter only; no sample body)
 ensure_dir(pages_dir)
 page_path = pages_dir / f"{slug}.md"
 if not page_path.exists():
-    fm = "---\n"
-    fm += "layout: creator\n"
-    fm += f"name: {display_name}\n"
-    if bio:
-        fm += f"bio: {bio}\n"
-    if avatar_url:
-        fm += f"avatar_url: {avatar_url}\n"
-    fm += f"platform: {platform}\n"
-    fm += f"channel_url: {channel_url}\n"
-    if channel_id:
-        fm += f"channel_id: {channel_id}\n"
-    fm += f"permalink: /creators/{slug}/\n"
-    fm += "---\n"
+    lines = ["---",
+             "layout: creator",
+             f"name: {display_name}",
+             f"creator_id: {creator_id}",
+             f"slug: {slug}",
+             f"permalink: /creators/{slug}/",
+             f"platform: {platform}",
+             f"channel_url: {channel_url}"]
+    if channel_id: lines.append(f"channel_id: {channel_id}")
+    if bio: lines.append(f"bio: {bio}")
+    if avatar_url: lines.append(f"avatar_url: {avatar_url}")
+    lines.append("---")
     with open(page_path, "w", encoding="utf-8") as f:
-        f.write(fm)
+        f.write("\\n".join(lines)+"\\n")
     print(f"Created page: {page_path}")
 else:
     print("Creator page already exists; skipping.")

@@ -25,10 +25,52 @@ layout: default
     </div>
   </div>
 
-  <div class="hr"></div>
-
-  <div class="tgd-card">
-    <h2 style="margin-top:0">소개</h2>
-    <p>{{ page.description | default: '소개가 아직 없습니다.' }}</p>
+  <div class="tabs">
+    <a class="btn primary" data-tab-target="pane-profile">프로필</a>
+    <a class="btn" data-tab-target="creator-schedule">일정</a>
   </div>
+
+  <!-- Profile Pane -->
+  <section id="pane-profile" class="tab-pane">
+    <div class="tgd-card">
+      <h2 style="margin-top:0">소개</h2>
+      <p>{{ page.description | default: '소개가 아직 없습니다.' }}</p>
+    </div>
+  </section>
+
+  <!-- Schedule Pane (visible only here; global nav removed) -->
+  <section id="creator-schedule" class="tab-pane" hidden>
+    {%- assign cid = page.creator_id | default: page.id | default: page.slug | default: page.name | slugify -%}
+    {%- assign all = site.data.schedule -%}
+    <div class="tgd-card">
+      <h2 style="margin-top:0">방송 일정</h2>
+      {%- if all -%}
+        {%- assign list = all | where: "creator_id", cid -%}
+        {%- if list and list.size > 0 -%}
+          <div class="filters" style="margin-bottom:10px;">
+            <span class="badge">표시 기준: {{ list.size }}개</span>
+          </div>
+          <table class="table">
+            <thead><tr><th>시작</th><th>종료</th><th>제목</th><th>플랫폼</th><th>링크</th></tr></thead>
+            <tbody>
+              {%- assign sorted = list | sort: "date_start" -%}
+              {%- for ev in sorted -%}
+                <tr>
+                  <td>{{ ev.date_start }}</td>
+                  <td>{{ ev.date_end | default: '' }}</td>
+                  <td>{{ ev.title }}</td>
+                  <td>{{ ev.platform | upcase }}</td>
+                  <td>{% if ev.url %}<a href="{{ ev.url }}" target="_blank" rel="noopener">바로가기</a>{% endif %}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- else -%}
+          <p style="color:var(--tgd-muted)">등록된 일정이 없습니다. <code>data/schedule.yml</code>에 <code>creator_id: {{ cid }}</code>로 항목을 추가하면 이 탭에 자동 표시됩니다.</p>
+        {%- endif -%}
+      {%- else -%}
+        <p style="color:var(--tgd-muted)">사이트에 <code>data/schedule.yml</code>이 아직 없습니다.</p>
+      {%- endif -%}
+    </div>
+  </section>
 </div>

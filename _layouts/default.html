@@ -8,17 +8,17 @@
     {%- seo -%}
     <link rel="stylesheet" href="{{ '/assets/css/tgd.css' | relative_url }}">
   </head>
+  {%- assign is_creator = page.layout == 'creator' or page.url contains '/creators/' -%}
   <body class="tgd page-{{ page.slug | default: page.title | default: page.permalink | slugify }} layout-{{ page.layout | default: 'default' | slugify }}">
     <header class="tgd-topbar">
       <div class="inner">
-        <a class="tgd-brand" href="{{ '/' | relative_url }}">
-          <span class="dot"></span>
-          <span>{{ site.title | default: 'Site' }}</span>
-        </a>
+        <a class="tgd-brand" href="{{ '/' | relative_url }}"><span class="dot"></span><span>{{ site.title | default: 'Site' }}</span></a>
         <div class="tgd-spacer"></div>
         <div class="tgd-top-actions">
           <a href="{{ '/creators/' | relative_url }}" class="btn">스트리머</a>
-          <a href="{{ '/schedule/' | relative_url }}" class="btn">일정</a>
+          {%- if is_creator -%}
+            <a href="#creator-schedule" class="btn">일정</a>
+          {%- endif -%}
           <a href="{{ '/community/' | relative_url }}" class="btn">커뮤니티</a>
         </div>
       </div>
@@ -28,7 +28,9 @@
       <aside class="tgd-sidebar">
         <nav class="tgd-nav">
           <a href="{{ '/creators/'  | relative_url }}"><span class="bullet"></span> 스트리머</a>
-          <a href="{{ '/schedule/'   | relative_url }}"><span class="bullet"></span> 일정</a>
+          {%- if is_creator -%}
+            <a href="#creator-schedule"><span class="bullet"></span> 일정</a>
+          {%- endif -%}
           <a href="{{ '/tutorials/'  | relative_url }}"><span class="bullet"></span> 튜토리얼</a>
           <a href="{{ '/community/'  | relative_url }}"><span class="bullet"></span> 커뮤니티</a>
           <a href="{{ '/gear/'       | relative_url }}"><span class="bullet"></span> 장비</a>
@@ -55,7 +57,6 @@
       <div>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</div>
       <div>Powered by Jekyll · Custom TGD-like theme</div>
     </footer>
-
     <script src="{{ '/assets/js/tgd.js' | relative_url }}"></script>
   </body>
 </html>
