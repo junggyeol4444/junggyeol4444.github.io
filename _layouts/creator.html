@@ -30,7 +30,6 @@ layout: default
     <a class="btn" data-tab-target="creator-schedule">일정</a>
   </div>
 
-  <!-- Profile Pane -->
   <section id="pane-profile" class="tab-pane">
     <div class="tgd-card">
       <h2 style="margin-top:0">소개</h2>
@@ -38,7 +37,6 @@ layout: default
     </div>
   </section>
 
-  <!-- Schedule Pane (visible only here; global nav removed) -->
   <section id="creator-schedule" class="tab-pane" hidden>
     {%- assign cid = page.creator_id | default: page.id | default: page.slug | default: page.name | slugify -%}
     {%- assign all = site.data.schedule -%}
@@ -47,9 +45,6 @@ layout: default
       {%- if all -%}
         {%- assign list = all | where: "creator_id", cid -%}
         {%- if list and list.size > 0 -%}
-          <div class="filters" style="margin-bottom:10px;">
-            <span class="badge">표시 기준: {{ list.size }}개</span>
-          </div>
           <table class="table">
             <thead><tr><th>시작</th><th>종료</th><th>제목</th><th>플랫폼</th><th>링크</th></tr></thead>
             <tbody>
