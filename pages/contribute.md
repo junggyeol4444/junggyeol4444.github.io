@@ -1,6 +1,9 @@
 ---
-layout: null
+layout: page
+title: Contribute
+permalink: /pages/contribute.html
 ---
+
 # Contribute 안내
 
 모든 제안은 Issue 또는 Pull Request로 투명하게 논의하며 이메일·개별 DM 등 외부 채널은 사용하지 않습니다.
