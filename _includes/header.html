@@ -1,29 +1,53 @@
 
 <header class="site-header">
-  <div class="brand">
-    <a href="{{ '/' | relative_url }}" class="logo">방게더</a>
+  <div class="header-inner">
+    <div class="left">
+      <a href="{{ '/' | relative_url }}" class="logo">방게더</a>
+      <nav class="site-nav" aria-label="주요">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">메뉴</button>
+        <ul id="nav-menu">
+          {% for item in site.nav %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+    <div class="actions">
+      <a class="btn ghost" href="{{ '/auth/login/' | relative_url }}">로그인</a>
+      <a class="btn solid" href="{{ '/auth/signup/' | relative_url }}">회원가입</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="다크 모드 전환">
+        <span class="icon sun" aria-hidden="true">☀️</span>
+        <span class="icon moon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
   </div>
-  <nav class="site-nav" aria-label="주요">
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">메뉴</button>
-    <ul id="nav-menu">
-      {% for item in site.nav %}
-      <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-      {% endfor %}
-      <li>
-        <button onclick="toggleDarkMode()">다크모드 전환</button>
-      </li>
-    </ul>
-  </nav>
 </header>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const btn = document.querySelector('.nav-toggle');
     const menu = document.querySelector('#nav-menu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', () => {
-      const exp = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!exp));
-      menu.classList.toggle('open');
-    });
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const exp = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!exp));
+        menu.classList.toggle('open');
+      });
+    }
+    const toggle = document.getElementById('themeToggle');
+    if(toggle){
+      const apply = () => {
+        if(localStorage.getItem('dark-mode')==='true'){
+          document.body.classList.add('dark-mode');
+        }else{
+          document.body.classList.remove('dark-mode');
+        }
+      };
+      apply();
+      toggle.addEventListener('click', () => {
+        const curr = localStorage.getItem('dark-mode') === 'true';
+        localStorage.setItem('dark-mode', String(!curr));
+        apply();
+      });
+    }
   });
 </script>

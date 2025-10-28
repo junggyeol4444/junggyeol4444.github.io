@@ -34,6 +34,12 @@
           "null"
         ]
       },
+      "creator_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
       "tags": {
         "type": "array",
         "items": {
