@@ -58,3 +58,21 @@ a{color:var(--tgd-accent);text-decoration:none} a:hover{text-decoration:underlin
 /* Tabs inside creator page */
 .tabs{display:flex;gap:8px;margin:6px 0 12px 0;flex-wrap:wrap}
 .tab-pane[hidden]{display:none}
+
+/* 레이아웃: 콘텐츠가 적어도 푸터를 화면 하단에 고정 */
+html, body { height: 100%; }
+body.tgd {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.tgd-shell { flex: 1 0 auto; }   /* 본문이 남는 공간을 채우게 해서 푸터를 아래로 밀어냄 */
+
+/* 푸터: 왼쪽 정렬 + 여백 조정 */
+.tgd-footer {
+  flex-shrink: 0;
+  justify-content: flex-start;   /* 왼쪽 정렬 */
+  gap: 12px;                     /* 항목 간 간격 */
+  margin-top: 0;                 /* 위쪽 여백 제거(더 아래로) */
+  padding: 20px 18px 28px;       /* 하단 여백 조금 더 */
+}
