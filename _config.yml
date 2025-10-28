@@ -39,6 +39,7 @@ dark_mode: true
 
 # Authentication settings
 auth:
+  enable: false
   platforms:
     - twitch
     - youtube

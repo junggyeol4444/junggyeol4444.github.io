@@ -16,7 +16,9 @@
         <div class="tgd-top-actions">
           <a href="{{ '/creators/' | relative_url }}" class="btn">스트리머</a>
           <a href="{{ '/community/' | relative_url }}" class="btn">커뮤니티</a>
-          <span id="top-auth-links"><a class="btn" href="{{ '/auth/login/' | relative_url }}">로그인</a> <a class="btn" href="{{ '/auth/signup/' | relative_url }}">회원가입</a></span>
+          {% if site.auth and site.auth.enable %}
+<span id="top-auth-links"><a class="btn" href="{{ '/auth/login/' | relative_url }}">로그인</a> <a class="btn" href="{{ '/auth/signup/' | relative_url }}">회원가입</a></span>
+{% endif %}
         </div>
       </div>
     </header>
