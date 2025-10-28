@@ -1,26 +1,23 @@
 
-title: StreamHub
-description: Static-first community hub for streamers
-url: ""   # set your custom domain or repo pages URL
-baseurl: "" # if using project site like /repo-name, set to "/repo-name"
+title: 방게더
+description: 방송인들을 위한 커뮤니티
+url: ""  # set your custom domain or repo pages URL
+baseurl: ""  # set to "/repo-name" for project sites
 
 theme: minima
-
-markdown: kramdown
-kramdown:
-  input: GFM
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Navigation links for "방게더"
 nav:
-  - title: 일정
+  - title: 방송 일정
     url: /schedule/
-  - title: 신규 크리에이터
+  - title: 스트리머
     url: /creators/
-  - title: 클립
+  - title: 방송 클립
     url: /clips/
   - title: 튜토리얼
     url: /tutorials/
@@ -37,49 +34,13 @@ nav:
   - title: 소개
     url: /about/
 
-giscus:
-  enable: false
-  repo: ""
-  repo_id: ""
-  category: ""
-  category_id: ""
-  mapping: "pathname"
-  reactions_enabled: "1"
-  emit_metadata: "0"
-  input_position: "bottom"
-  theme: "light"
-  lang: "ko"
+# Dark Mode Setting
+dark_mode: true
 
-ads:
-  enable_right: true
-  enable_footer: true
-
-auto_sources:
-  youtube_channels: []
-  max_items_per_channel: 10
-
-collections:
-  tutorials:
-    output: true
-    permalink: /tutorials/:name/
-
-defaults:
-  - scope:
-      path: ""
-      type: "tutorials"
-    values:
-      layout: post
-
-exclude:
-  - node_modules
-  - vendor
-  - scripts
-  - schemas
-  - .github
-  - README.md
-  - LICENSE-MIT
-  - LICENSE-CC-BY-4.0
-  - CODE_OF_CONDUCT.md
-  - Gemfile
-  - Gemfile.lock
-  - out
+# Authentication settings
+auth:
+  platforms:
+    - twitch
+    - youtube
+    - soop_tv
+    - chijijik

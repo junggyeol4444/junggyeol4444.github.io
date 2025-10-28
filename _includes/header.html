@@ -1,7 +1,7 @@
 
 <header class="site-header">
   <div class="brand">
-    <a href="{{ '/' | relative_url }}" class="logo">StreamHub</a>
+    <a href="{{ '/' | relative_url }}" class="logo">방게더</a>
   </div>
   <nav class="site-nav" aria-label="주요">
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">메뉴</button>
@@ -9,9 +9,8 @@
       {% for item in site.nav %}
       <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
       {% endfor %}
-      <li class="search-box">
-        <input id="search-input" type="search" placeholder="검색…" aria-label="검색">
-        <div id="search-results" class="search-results" role="listbox" aria-label="검색 결과"></div>
+      <li>
+        <button onclick="toggleDarkMode()">다크모드 전환</button>
       </li>
     </ul>
   </nav>
