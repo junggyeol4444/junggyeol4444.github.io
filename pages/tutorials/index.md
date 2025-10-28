@@ -1,6 +1,9 @@
 ---
-layout: null
+layout: page
+title: Tutorials
+permalink: /pages/tutorials/index.html
 ---
+
 # 튜토리얼 허브
 
 방송 입문자를 위한 정적 문서 링크만 제공하며 댓글·평판·자동 추천 등 상호작용 기능은 모두 보류합니다.
